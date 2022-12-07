@@ -8,7 +8,8 @@
 4. Pastikan minimal flutter version yang terinstall adalah versi `3.0.3`
 5. Untuk cara pengecekan versi bisa run `flutter doctor` pada terminal
 6. Jika versi flutter yang terinstall masih dibawah `3.0.3` -> bisa run `flutter upgrade` pada terminal
-7. Selesaikan challenge yang terdapat pada file `lib/routes/routes.dart`, `lib/modules/hello/hello_view.dart`
+7. run `flutter pub get` pada terminal
+8. Selesaikan challenge yang terdapat pada file `lib/routes/routes.dart`, `lib/modules/hello/hello_view.dart`
 
 ## Teknologi yang Digunakan
 
@@ -18,5 +19,6 @@
 
 ## Langkah-langkah Build .apk
 
-1. Buka terminal lalu run `flutter build apk --debug`
-2. Automation test untuk Flutter hanya bisa menggunakan debug version .apk
+1. Buka file `lib/main.dart` lalu uncomment code pada method `main` sesuai arahan
+2. Buka terminal lalu run `flutter build apk --debug`
+3. Automation test untuk Flutter hanya bisa menggunakan debug version .apk
