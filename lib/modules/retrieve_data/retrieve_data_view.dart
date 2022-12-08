@@ -22,8 +22,7 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
         children: [
           GestureDetector(
             onTap: () {
-              // Uncomment code di bawah ini untuk memanggil method [getContacts] di dalam class [RetrieveDataController].
-              // controller.getContacts();
+              controller.getContacts();
             },
             child: const Icon(Icons.refresh, size: 24,),
           ),
@@ -55,28 +54,36 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
             children: [
               const Text('Devcode Contact Manager', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24), key: Key('header-title'),),
               const SizedBox(height: 24,),
-              FormInput(title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) {}, textInputType: TextInputType.text),
+              FormInput(title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
               const SizedBox(height: 8,),
-              FormInput(title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {}, textInputType: TextInputType.text),
+              FormInput(title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
+                // TODO: Uncomment code di bawah agar variable [phoneNumber] bisa berubah
+                // controller.phoneNumber(value);
+              }, textInputType: TextInputType.phone),
               const SizedBox(height: 8,),
-              FormInput(title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {}, textInputType: TextInputType.text),
+              FormInput(title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
+                // TODO: Ubah variable [email] yang ada di dalam class [RetrieveDataController]
+              }, textInputType: TextInputType.emailAddress),
               const SizedBox(height: 8,),
               Row(
                 children: [
                   Expanded(
-                    child: TextButton(
-                      key: const Key('btn-submit'),
-                      onPressed: () {
-                      },
-                      child: const Text('Simpan',
-                          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white)
-                      ),
-                      style: TextButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        backgroundColor: Colors.green,
-                        // minimumSize: Size(double.infinity, minimumSize ?? 50),
-                      ),
-                    ),
+                    child: Obx(() {
+                      return TextButton(
+                        key: const Key('btn-submit'),
+                        onPressed: () {
+                          // TODO: panggil method [createContact] yang ada di dalam class [RetrieveDataController].
+                        },
+                        child: Text(controller.createContactStatus.value == RequestStatus.LOADING ? 'Creating...' : 'Simpan',
+                            style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white)
+                        ),
+                        style: TextButton.styleFrom(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          backgroundColor: controller.createContactStatus.value == RequestStatus.LOADING ? Colors.black38 : Colors.green,
+                          // minimumSize: Size(double.infinity, minimumSize ?? 50),
+                        ),
+                      );
+                    }),
                   ),
                 ],
               )

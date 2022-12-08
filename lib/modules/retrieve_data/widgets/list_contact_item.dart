@@ -1,4 +1,4 @@
-import 'package:devcode_flutter_starter/data/model/contact_model.dart';
+import 'package:devcode_flutter_starter/data/model/response/contact_model.dart';
 import 'package:flutter/material.dart';
 
 class ListContactItem extends StatelessWidget {
@@ -23,9 +23,15 @@ class ListContactItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(contact.fullName ?? '', style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
+          Text(contact.fullName ?? '', key: const Key('item-name'), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
           const SizedBox(height: 6,),
-          Text('${contact.phoneNumber ?? ''} | ${contact.email ?? ''}', style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
+          Row(
+            children: [
+              Text(contact.phoneNumber ?? '', key: const Key('item-phone'), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
+              const Text(' | ', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
+              Text(contact.email ?? '', key: const Key('item-email'), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
+            ],
+          ),
         ],
       ),
     );

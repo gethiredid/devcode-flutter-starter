@@ -1,4 +1,4 @@
-# Devcode Starter using Flutter Level 1
+# Devcode Starter using Flutter Level 3
 
 ## Instruksi Pengerjaan
 
@@ -9,7 +9,7 @@
 5. Untuk cara pengecekan versi bisa run `flutter doctor` pada terminal
 6. Jika versi flutter yang terinstall masih dibawah `3.0.3` -> bisa run `flutter upgrade` pada terminal
 7. run `flutter pub get` pada terminal
-8. Selesaikan challenge yang terdapat pada file `lib/modules/hello/hello_view.dart`, `lib/modules/retrieve_data/retrieve_data_controller.dart`, `lib/modules/retrieve_data/retrieve_data_view.dart`
+8. Selesaikan challenge yang terdapat pada file `lib/modules/retrieve_data/retrieve_data_controller.dart`, `lib/modules/retrieve_data/retrieve_data_view.dart`
 
 ## Teknologi yang Digunakan
 
