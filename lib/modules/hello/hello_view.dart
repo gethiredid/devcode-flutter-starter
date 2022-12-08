@@ -11,7 +11,7 @@ class HelloView extends StatelessWidget {
         children: [
           Image.asset('assets/png/devcode-logo.png', key: const Key('devcode-logo'), width: 200, height: 200),
           const Align(
-            alignment: Alignment.center, child: Text("I'm ready for the next challenge!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+            alignment: Alignment.center, child: Text("I'm ready for the next challenge!", key: Key('devcode-title'), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
           ),
           const SizedBox(height: 8,),
           TextButton(
