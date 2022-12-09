@@ -5,8 +5,9 @@ class FormInput extends StatelessWidget {
   final String hint;
   final Function(String value) onChanged;
   final TextInputType textInputType;
+  final TextEditingController controller;
 
-  const FormInput({Key? key, required this.title, required this.hint, required this.onChanged, required this.textInputType}) : super(key: key);
+  const FormInput({Key? key, required this.controller, required this.title, required this.hint, required this.onChanged, required this.textInputType}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class FormInput extends StatelessWidget {
         Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
         const SizedBox(height: 4,),
         TextFormField(
+          controller: controller,
           keyboardType: textInputType,
           textInputAction: TextInputAction.done,
           maxLines: 1,

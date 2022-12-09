@@ -19,9 +19,9 @@ class BaseService extends GetConnect {
     return data;
   }
 
-  Future<Response<dynamic>> patchRequest({required String url, required dynamic body}) async {
+  Future<Response<dynamic>> putRequest({required String url, required dynamic body}) async {
     debugPrint('PATCH Request: ${httpClient.baseUrl}$url');
-    final data = await patch(url, body);
+    final data = await put(url, body);
     debugPrint('Body: $body');
     debugPrint('Response: ${data.body}');
 

@@ -32,11 +32,15 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
       const Center(child: Text('Data contact kosong!', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),)) :
       ListView.separated(
         shrinkWrap: true,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         itemBuilder: (_, index) {
           final data = controller.contacts[index];
 
-          return ListContactItem(contact: data,);
+          return ListContactItem(
+            contact: data, index: index,
+            onEdit: () => controller.prepareEditContact(data),
+            onDelete: () => controller.deleteContact(data),
+          );
         },
         separatorBuilder: (_, __) => const Divider(height: 9, color: Colors.transparent,),
         itemCount: controller.contacts.length,
@@ -54,15 +58,14 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
             children: [
               const Text('Devcode Contact Manager', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24), key: Key('header-title'),),
               const SizedBox(height: 24,),
-              FormInput(title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
+              FormInput(controller: controller.fullnameController, title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
               const SizedBox(height: 8,),
-              FormInput(title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
-                // TODO: Uncomment code di bawah agar variable [phoneNumber] bisa berubah
-                // controller.phoneNumber(value);
+              FormInput(controller: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
+                controller.phoneNumber(value);
               }, textInputType: TextInputType.phone),
               const SizedBox(height: 8,),
-              FormInput(title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
-                // TODO: Ubah variable [email] yang ada di dalam class [RetrieveDataController]
+              FormInput(controller: controller.emailController, title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
+                controller.email(value);
               }, textInputType: TextInputType.emailAddress),
               const SizedBox(height: 8,),
               Row(
@@ -72,7 +75,11 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
                       return TextButton(
                         key: const Key('btn-submit'),
                         onPressed: () {
-                          // TODO: panggil method [createContact] yang ada di dalam class [RetrieveDataController].
+                          if (controller.selectedContact != null) {
+                            controller.editContact();
+                          } else {
+                            controller.createContact();
+                          }
                         },
                         child: Text(controller.createContactStatus.value == RequestStatus.LOADING ? 'Creating...' : 'Simpan',
                             style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white)
