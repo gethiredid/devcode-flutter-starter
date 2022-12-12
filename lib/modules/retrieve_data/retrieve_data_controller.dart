@@ -57,22 +57,21 @@ class RetrieveDataController extends GetxController {
   }
 
   void editContact() async {
-    // TODO: Uncomment code di bawah setelah menyelesaikan task di file [contact_repository.dart]
-    // createContactStatus(RequestStatus.LOADING);
-    // final data = await contactRepository.editContact(createContactRequest(fullname.value, phoneNumber.value, email.value), selectedContact!);
-    // createContactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
-    //
-    // data.fold((left) {}, (right) {
-    //   final selectedIndex = contacts.indexWhere((element) => element.id == selectedContact?.id);
-    //
-    //   contacts[selectedIndex] = right;
-    //   contacts.refresh();
-    //
-    //   // Reset [selectedContact] to null
-    //   selectedContact = null;
-    //
-    //   resetInput();
-    // });
+    createContactStatus(RequestStatus.LOADING);
+    final data = await contactRepository.editContact(createContactRequest(fullname.value, phoneNumber.value, email.value), selectedContact!);
+    createContactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
+
+    data.fold((left) {}, (right) {
+      final selectedIndex = contacts.indexWhere((element) => element.id == selectedContact?.id);
+
+      contacts[selectedIndex] = right;
+      contacts.refresh();
+
+      // Reset [selectedContact] to null
+      selectedContact = null;
+
+      resetInput();
+    });
   }
 
   void prepareEditContact(ContactItem contact) {
@@ -88,12 +87,12 @@ class RetrieveDataController extends GetxController {
   }
 
   void deleteContact(ContactItem contact) async {
-    // TODO: Uncomment code di bawah setelah selesai task di file [contact_repository.dart]
-    // final data = await contactRepository.deleteContact(contact);
-    //
-    // data.fold((l) {}, (r) {
-    //   // TODO: Tuliskan code yang berfungsi untuk menghapus item contact yang sudah terhapus dari server dan panggil method [showDeleteDialog].
-    // });
+    final data = await contactRepository.deleteContact(contact);
+
+    data.fold((l) {}, (r) {
+      contacts.remove(contact);
+      showDeleteDialog();
+    });
   }
   
   void showDeleteDialog() {
