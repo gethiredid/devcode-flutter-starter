@@ -51,11 +51,9 @@ class RetrieveDataController extends GetxController {
     final data = await contactRepository.createContact(createContactRequest(fullname.value, phoneNumber.value, email.value));
     createContactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
 
-    data.fold((left) {}, (right) {
-      contacts.insert(0, right);
+    resetInput();
 
-      resetInput();
-    });
+    data.fold((left) {}, (right) => contacts.add(right));
   }
 
   void editContact() async {

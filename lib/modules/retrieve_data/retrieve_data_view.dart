@@ -58,14 +58,15 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
             children: [
               const Text('Devcode Contact Manager', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24), key: Key('header-title'),),
               const SizedBox(height: 24,),
-              FormInput(controller: controller.fullnameController, title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
+              FormInput(textEditingController: controller.fullnameController, title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
               const SizedBox(height: 8,),
-              FormInput(controller: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
-                controller.phoneNumber(value);
+              FormInput(textEditingController: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
+                // TODO: Uncomment code di bawah agar variable [phoneNumber] bisa berubah
+                // controller.phoneNumber(value);
               }, textInputType: TextInputType.phone),
               const SizedBox(height: 8,),
-              FormInput(controller: controller.emailController, title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
-                controller.email(value);
+              FormInput(textEditingController: controller.emailController, title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
+                // TODO: Ubah variable [email] yang ada di dalam class [RetrieveDataController] sesuai dengan value dari FormInput
               }, textInputType: TextInputType.emailAddress),
               const SizedBox(height: 8,),
               Row(
