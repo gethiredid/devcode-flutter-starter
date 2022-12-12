@@ -26,10 +26,11 @@ class ListContactItem extends StatelessWidget {
           Text(contact.fullName ?? '', key: const Key('item-name'), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
           const SizedBox(height: 6,),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(contact.phoneNumber ?? '', key: const Key('item-phone'), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
+              Flexible(child: Text(contact.phoneNumber ?? '', key: const Key('item-phone'), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),)),
               const Text(' | ', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
-              Text(contact.email ?? '', key: const Key('item-email'), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
+              Flexible(child: Text(contact.email ?? '', key: const Key('item-email'), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),)),
             ],
           ),
         ],

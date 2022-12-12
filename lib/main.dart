@@ -18,7 +18,7 @@ void initCoreService() {
 
 void main() {
   // TODO: Uncomment code di bawah, setiap kali ingin build debug apk untuk proses automation test.
-  // initFlutterDriver();
+  initFlutterDriver();
 
   initCoreService();
 

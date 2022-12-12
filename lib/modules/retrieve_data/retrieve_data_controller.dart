@@ -3,6 +3,7 @@ import 'package:devcode_flutter_starter/data/enums/enums.dart';
 // import 'package:devcode_flutter_starter/data/model/request/create_contact_request.dart';
 import 'package:devcode_flutter_starter/data/model/response/contact_model.dart';
 import 'package:devcode_flutter_starter/data/repository/contact_repository.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RetrieveDataController extends GetxController {
@@ -17,6 +18,8 @@ class RetrieveDataController extends GetxController {
   final fullname = ''.obs;
   final phoneNumber = ''.obs;
   final email = ''.obs;
+
+  final fullnameController = TextEditingController(), phoneNumberController = TextEditingController(), emailController = TextEditingController();
 
   final contactRepository = ContactRepositoryImpl();
 
@@ -36,7 +39,21 @@ class RetrieveDataController extends GetxController {
     // final data = await contactRepository.createContact(createContactRequest(fullname.value, phoneNumber.value, email.value));
     // createContactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
     //
-    // data.fold((left) {}, (right) => contacts.insert(0, right));
+    // resetInput();
+    //
+    // data.fold((left) {
+    //   getContacts();
+    // }, (right) => contacts.add(right));
+  }
+
+  void resetInput() {
+    fullname('');
+    phoneNumber('');
+    email('');
+
+    fullnameController.text = fullname.value;
+    phoneNumberController.text = phoneNumber.value;
+    emailController.text = email.value;
   }
 
   @override
@@ -44,5 +61,13 @@ class RetrieveDataController extends GetxController {
     getContacts();
 
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    fullnameController.dispose();
+    phoneNumberController.dispose();
+    emailController.dispose();
+    super.dispose();
   }
 }

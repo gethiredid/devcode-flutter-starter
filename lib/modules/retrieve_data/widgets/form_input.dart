@@ -5,8 +5,9 @@ class FormInput extends StatelessWidget {
   final String hint;
   final Function(String value) onChanged;
   final TextInputType textInputType;
+  final TextEditingController? textEditingController;
 
-  const FormInput({Key? key, required this.title, required this.hint, required this.onChanged, required this.textInputType}) : super(key: key);
+  const FormInput({Key? key, required this.textEditingController, required this.title, required this.hint, required this.onChanged, required this.textInputType}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,7 @@ class FormInput extends StatelessWidget {
           maxLines: 1,
           onChanged: (value) => onChanged(value.trim()),
           style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+          controller: textEditingController,
           decoration: InputDecoration(
             isDense: true,
             hintText: hint,
