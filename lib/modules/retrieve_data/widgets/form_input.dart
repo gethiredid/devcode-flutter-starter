@@ -6,8 +6,10 @@ class FormInput extends StatelessWidget {
   final Function(String value) onChanged;
   final TextInputType textInputType;
   final TextEditingController? textEditingController;
+  final String? error;
+  final String? errorKey;
 
-  const FormInput({Key? key, required this.textEditingController, required this.title, required this.hint, required this.onChanged, required this.textInputType}) : super(key: key);
+  const FormInput({Key? key, this.errorKey, this.error, required this.textEditingController, required this.title, required this.hint, required this.onChanged, required this.textInputType}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,11 @@ class FormInput extends StatelessWidget {
             suffixIconConstraints: const BoxConstraints(maxHeight: 30, maxWidth: 30),
             errorStyle: const TextStyle(fontWeight: FontWeight.normal, fontSize: 16, color: Colors.red),
           ),
-        )
+        ),
+        if (error != null) ...[
+          const SizedBox(height: 4,),
+          Text(error ?? '', key: Key(errorKey ?? ''), style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 12, color: Colors.red),),
+        ]
       ],
     );
   }

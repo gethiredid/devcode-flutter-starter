@@ -54,49 +54,53 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
       body: Column(
         children: [
           SizedBox(height: AppBar().preferredSize.height,),
-          Column(
-            children: [
-              const Text('Devcode Contact Manager', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24), key: Key('header-title'),),
-              const SizedBox(height: 24,),
-              FormInput(textEditingController: controller.fullnameController, title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
-              const SizedBox(height: 8,),
-              FormInput(textEditingController: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
-                // TODO: Uncomment code di bawah agar variable [phoneNumber] bisa berubah
-                // controller.phoneNumber(value);
-              }, textInputType: TextInputType.phone),
-              const SizedBox(height: 8,),
-              FormInput(textEditingController: controller.emailController, title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
-                // TODO: Ubah variable [email] yang ada di dalam class [RetrieveDataController] sesuai dengan value dari FormInput
-              }, textInputType: TextInputType.emailAddress),
-              const SizedBox(height: 8,),
-              Row(
-                children: [
-                  Expanded(
-                    child: Obx(() {
-                      return TextButton(
-                        key: const Key('btn-submit'),
-                        onPressed: () {
-                          if (controller.selectedContact != null) {
-                            controller.editContact();
-                          } else {
-                            controller.createContact();
-                          }
-                        },
-                        child: Text(controller.createContactStatus.value == RequestStatus.LOADING ? 'Creating...' : 'Simpan',
-                            style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white)
-                        ),
-                        style: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                          backgroundColor: controller.createContactStatus.value == RequestStatus.LOADING ? Colors.black38 : Colors.green,
-                          // minimumSize: Size(double.infinity, minimumSize ?? 50),
-                        ),
-                      );
-                    }),
-                  ),
-                ],
-              )
-            ],
-          ).marginSymmetric(horizontal: 16),
+          Obx(() => Column(
+              children: [
+                const Text('Devcode Contact Manager', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24), key: Key('header-title'),),
+                const SizedBox(height: 24,),
+                FormInput(textEditingController: controller.fullnameController, title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
+                const SizedBox(height: 8,),
+                FormInput(textEditingController: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
+                  controller.phoneNumber(value);
+                }, textInputType: TextInputType.phone, error: controller.errorInput('phone'), errorKey: 'error-desc-phone',),
+                const SizedBox(height: 8,),
+                FormInput(textEditingController: controller.emailController, title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
+                  controller.email(value);
+                }, textInputType: TextInputType.emailAddress, error: controller.errorInput('email'), errorKey: 'error-desc-email',),
+                const SizedBox(height: 8,),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Obx(() {
+                        return TextButton(
+                          key: const Key('btn-submit'),
+                          onPressed: controller.disableBtnSimpan ? null : () {
+                            controller.validateInput(true);
+
+                            if (controller.errorInput('email') != null || controller.errorInput('phone') != null) return;
+
+                            if (controller.selectedContact != null) {
+                              controller.editContact();
+                            } else {
+                              controller.createContact();
+                            }
+                          },
+                          child: Text(controller.createContactStatus.value == RequestStatus.LOADING ? 'Creating...' : 'Simpan',
+                              style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white)
+                          ),
+                          style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                            backgroundColor: Colors.green.withOpacity(controller.disableBtnSimpan ? 0.7 : 1),
+                            // minimumSize: Size(double.infinity, minimumSize ?? 50),
+                          ),
+                        );
+                      }),
+                    ),
+                  ],
+                )
+              ],
+            ).marginSymmetric(horizontal: 16),
+          ),
           Expanded(
             child: _contactList,
           )
