@@ -28,13 +28,14 @@ class RetrieveDataController extends GetxController {
   final contactRepository = ContactRepositoryImpl();
 
   String? errorInput(String key) {
-    if (!validateInput.value) return null;
-
-    if (key == 'phone') {
-      return phoneNumber.value.isPhoneNumber ? null : 'Format nomor telepon tidak sesuai';
-    } else if (key == 'email') {
-      return email.value.isEmail ? null : 'Format email tidak sesuai';
-    }
+    // TODO: Uncomment code di bawah untuk membuat function dengan return string untuk ditampilkan di validasi input
+    // if (!validateInput.value) return null;
+    //
+    // if (key == 'phone') {
+    //   return phoneNumber.value.isPhoneNumber ? null : 'Format nomor telepon tidak sesuai';
+    // } else if (key == 'email') {
+    //   return email.value.isEmail ? null : 'Format email tidak sesuai';
+    // }
 
     return null;
   }
