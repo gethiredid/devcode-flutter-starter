@@ -58,7 +58,11 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
               children: [
                 const Text('Devcode Contact Manager', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24), key: Key('header-title'),),
                 const SizedBox(height: 24,),
-                FormInput(textEditingController: controller.fullnameController, title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
+                FormInput(
+                    textEditingController: controller.fullnameController, title: 'Nama Lengkap',
+                    hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'),
+                    onChanged: (value) => controller.fullname(value),
+                    textInputType: TextInputType.text, errorKey: 'error-desc-fullname', error: controller.errorInput('fullname'),),
                 const SizedBox(height: 8,),
                 FormInput(textEditingController: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
                   controller.phoneNumber(value);
@@ -74,10 +78,10 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
                       child: Obx(() {
                         return TextButton(
                           key: const Key('btn-submit'),
-                          onPressed: controller.disableBtnSimpan ? null : () {
+                          onPressed: () {
                             controller.validateInput(true);
 
-                            if (controller.errorInput('email') != null || controller.errorInput('phone') != null) return;
+                            if (controller.errorInput('email') != null || controller.errorInput('phone') != null || controller.errorInput('fullname') != null) return;
 
                             if (controller.selectedContact != null) {
                               controller.editContact();
@@ -90,7 +94,7 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
                           ),
                           style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            backgroundColor: Colors.green.withOpacity(controller.disableBtnSimpan ? 0.7 : 1),
+                            backgroundColor: Colors.green,
                             // minimumSize: Size(double.infinity, minimumSize ?? 50),
                           ),
                         );

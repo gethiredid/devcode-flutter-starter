@@ -30,17 +30,15 @@ class RetrieveDataController extends GetxController {
   String? errorInput(String key) {
     if (!validateInput.value) return null;
 
-    if (key == 'phone') {
-      return phoneNumber.value.isPhoneNumber ? null : 'Format nomor telepon tidak sesuai';
+    if (key == 'fullname') {
+      return fullname.value.isEmpty ? 'Field nama tidak boleh kosong' : null;
+    } else if (key == 'phone') {
+      return phoneNumber.value.isEmpty ? 'Field nomor telephone tidak boleh kosong' : !phoneNumber.value.isPhoneNumber ? 'Format nomor telepon tidak sesuai' : null;
     } else if (key == 'email') {
-      return email.value.isEmail ? null : 'Format email tidak sesuai';
+      return email.value.isEmpty ? 'Field email tidak boleh kosong' : !email.value.isEmail ? 'Format email tidak sesuai' : null;
     }
 
     return null;
-  }
-
-  bool get disableBtnSimpan {
-    return fullname.isEmpty || email.isEmpty || phoneNumber.isEmpty;
   }
 
   void resetInput() {
