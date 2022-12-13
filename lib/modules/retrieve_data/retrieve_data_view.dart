@@ -58,15 +58,29 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
               children: [
                 const Text('Devcode Contact Manager', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24), key: Key('header-title'),),
                 const SizedBox(height: 24,),
-                FormInput(textEditingController: controller.fullnameController, title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
+                FormInput(
+                  textEditingController: controller.fullnameController, title: 'Nama Lengkap',
+                  hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'),
+                  onChanged: (value) => controller.fullname(value),
+                  textInputType: TextInputType.text,
+                  // TODO: Uncomment code di bawah untuk menambahkan validasi error text kepada input nama lengkap.
+                  // errorKey: 'error-desc-fullname', error: controller.errorInput('fullname'),
+                ),
                 const SizedBox(height: 8,),
-                FormInput(textEditingController: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
-                  controller.phoneNumber(value);
-                }, textInputType: TextInputType.phone, error: controller.errorInput('phone'), errorKey: 'error-desc-phone',),
+                FormInput(
+                  textEditingController: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'),
+                  onChanged: (value) => controller.phoneNumber(value), textInputType: TextInputType.phone,
+                  // TODO: 1. Tambahkan property [error] dengan value controller.errorInput('phone')
+                  // TODO: 2. Tambahkan property [errorKey] dengan value 'error-desc-phone'
+                ),
                 const SizedBox(height: 8,),
-                FormInput(textEditingController: controller.emailController, title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
-                  controller.email(value);
-                }, textInputType: TextInputType.emailAddress, error: controller.errorInput('email'), errorKey: 'error-desc-email',),
+                FormInput(
+                  textEditingController: controller.emailController, title: 'Email', hint: 'Masukkan Email',
+                  key: const Key('input-email'), onChanged: (value) => controller.email(value), textInputType: TextInputType.emailAddress,
+                  // TODO: Uncomment dan tambahkan parameter di dalam function [controller.errorInput()] untuk mendapatkan error email
+                  // error: controller.errorInput(),
+                  errorKey: 'error-desc-email',
+                ),
                 const SizedBox(height: 8,),
                 Row(
                   children: [
@@ -74,10 +88,13 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
                       child: Obx(() {
                         return TextButton(
                           key: const Key('btn-submit'),
-                          onPressed: controller.disableBtnSimpan ? null : () {
+                          onPressed: () {
                             controller.validateInput(true);
 
-                            if (controller.errorInput('email') != null || controller.errorInput('phone') != null) return;
+                            if (controller.errorInput('fullname') != null ||
+                                controller.errorInput('phone') != null
+                                // TODO: Tambahkan validasi untuk mengecek apakah email sudah valid seperti code di atas
+                            ) return;
 
                             if (controller.selectedContact != null) {
                               controller.editContact();
@@ -90,7 +107,7 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
                           ),
                           style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            backgroundColor: Colors.green.withOpacity(controller.disableBtnSimpan ? 0.7 : 1),
+                            backgroundColor: Colors.green,
                             // minimumSize: Size(double.infinity, minimumSize ?? 50),
                           ),
                         );
