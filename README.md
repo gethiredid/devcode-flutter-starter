@@ -1,6 +1,10 @@
 # Devcode Starter using Flutter Level 1
 
-## Instruksi Pengerjaan
+## Hasil Akhir yang Diharapkan
+
+Peserta dapat menampilkan Halaman Hello yang berisi Logo Devcode dan Teks `I'm ready for the next challenge!`.
+
+## Setup Environment
 
 1. Download source code lewat link yang telah disediakan dari halaman assesment
 2. Extract source code yang sudah terdownload pada perangkat anda
@@ -8,8 +12,11 @@
 4. Pastikan minimal flutter version yang terinstall adalah versi `3.0.3`
 5. Untuk cara pengecekan versi bisa run `flutter doctor` pada terminal
 6. Jika versi flutter yang terinstall masih dibawah `3.0.3` -> bisa run `flutter upgrade` pada terminal
-7. run `flutter pub get` pada terminal
-8. Selesaikan challenge yang terdapat pada file `lib/routes/pages.dart`, `lib/modules/hello/hello_view.dart`
+7. Buka terminal dan masuk ke root project folder, lalu run `flutter pub get` pada terminal
+
+## Instruksi Pengerjaan
+
+1. Selesaikan challenge yang terdapat pada file `lib/routes/pages.dart`, `lib/modules/hello/hello_view.dart`
 
 ## Teknologi yang Digunakan
 
