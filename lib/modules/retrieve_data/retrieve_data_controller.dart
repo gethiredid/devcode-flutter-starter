@@ -10,7 +10,7 @@ class RetrieveDataController extends GetxController {
 
   final contactRepository = ContactRepositoryImpl();
 
-  // Uncomment code di bawah ini untuk melakukan request API mendapatkan list contact.
+  // TODO: Uncomment code di bawah ini untuk melakukan request API mendapatkan list contact.
   // void getContacts() async {
   //   contactStatus(RequestStatus.LOADING);
   //   final data = await contactRepository.getContact();
@@ -23,7 +23,7 @@ class RetrieveDataController extends GetxController {
 
   @override
   void onInit() {
-    // Uncomment code di bawah ini untuk memanggil method getContacts()
+    // TODO: Uncomment code di bawah ini untuk memanggil method getContacts()
     // getContacts();
 
     super.onInit();
