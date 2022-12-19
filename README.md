@@ -1,8 +1,8 @@
-# Devcode Starter using Flutter Level 2
+# Devcode Starter using Flutter Level 3
 
 ## Hasil Akhir yang Diharapkan
 
-Peserta dapat mengambil data kontak dari api dan menampilkannya dalam bentuk list pada halaman contacts
+Peserta dapat membuat kontak baru dengan mengirimkan data kontak baru ke API dan menampilkan pada list kontak setelah selesai dibuat
 
 ## Setup Environment
 
