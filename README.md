@@ -17,6 +17,8 @@ Peserta dapat menampilkan Halaman Hello yang berisi Logo Devcode dan Teks `I'm r
 ## Instruksi Pengerjaan
 
 1. Selesaikan challenge yang terdapat pada file `lib/routes/pages.dart`, `lib/modules/hello/hello_view.dart`
+2. Build solusi dari challenge yang sudah dibuat menjadi APK, untuk langkah-langkahnya dapat dilihat [disini](#langkah-langkah-build-apk)
+3. Submit APK hasil build ke Halaman Submission Devcode
 
 ## Teknologi yang Digunakan
 
@@ -24,7 +26,7 @@ Peserta dapat menampilkan Halaman Hello yang berisi Logo Devcode dan Teks `I'm r
 2. [GetX](https://pub.dev/packages/get)
 3. [dartz](https://pub.dev/packages/dartz)
 
-## Langkah-langkah Build .apk
+## Langkah-langkah Build apk
 
 1. Buka file `lib/main.dart` lalu uncomment code pada method `main` sesuai arahan
 2. Buka terminal lalu run `flutter build apk --debug`
