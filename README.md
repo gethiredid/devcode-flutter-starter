@@ -16,7 +16,7 @@ Peserta dapat membuat kontak baru dengan mengirimkan data kontak baru ke API dan
 
 ## Instruksi Pengerjaan
 
-1. Selesaikan challenge yang terdapat pada file `lib/modules/retrieve_data/retrieve_data_controller.dart`, `lib/modules/retrieve_data/retrieve_data_view.dart`
+1. Selesaikan semua TODO yang terdapat pada file `lib/modules/retrieve_data/retrieve_data_controller.dart`, `lib/modules/retrieve_data/retrieve_data_view.dart`
 2. Build solusi dari challenge yang sudah dibuat menjadi APK, untuk langkah-langkahnya dapat dilihat [disini](#langkah-langkah-build-apk)
 3. Submit APK hasil build ke Halaman Submission Devcode
 
