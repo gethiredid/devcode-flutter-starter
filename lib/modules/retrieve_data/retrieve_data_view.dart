@@ -57,11 +57,12 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
               FormInput(textEditingController: controller.fullnameController, title: 'Nama Lengkap', hint: 'Masukkan Nama Lengkap', key: const Key('input-nama'), onChanged: (value) => controller.fullname(value), textInputType: TextInputType.text),
               const SizedBox(height: 8,),
               FormInput(textEditingController: controller.phoneNumberController, title: 'No. Telepon', hint: 'Masukkan Nomor Telepon', key: const Key('input-telepon'), onChanged: (value) {
-                controller.phoneNumber(value);
+                // TODO: Uncomment code di bawah agar variable [phoneNumber] bisa berubah
+                // controller.phoneNumber(value);
               }, textInputType: TextInputType.phone),
               const SizedBox(height: 8,),
               FormInput(textEditingController: controller.emailController, title: 'Email', hint: 'Masukkan Email', key: const Key('input-email'), onChanged: (value) {
-                controller.email(value);
+                // TODO: Ubah variable [email] yang ada di dalam class [RetrieveDataController]
               }, textInputType: TextInputType.emailAddress),
               const SizedBox(height: 8,),
               Row(
@@ -71,7 +72,7 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
                       return TextButton(
                         key: const Key('btn-submit'),
                         onPressed: () {
-                          controller.createContact();
+                          // TODO: panggil method [createContact] yang ada di dalam class [RetrieveDataController].
                         },
                         child: Text(controller.createContactStatus.value == RequestStatus.LOADING ? 'Creating...' : 'Simpan',
                             style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white)
