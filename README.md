@@ -29,5 +29,6 @@ Peserta dapat mengambil data kontak dari api dan menampilkannya dalam bentuk lis
 ## Langkah-langkah Build apk
 
 1. Buka file `lib/main.dart` lalu uncomment code pada method `main` sesuai arahan
-2. Buka terminal lalu run `flutter build apk --debug`
-3. Automation test untuk Flutter hanya bisa menggunakan debug version .apk
+2. Buka terminal lalu run `flutter build apk --debug --split-per-abi`
+3. Split ini berguna agar size dari .apk tidak terlalu besar
+4. Upload file yang mengandung nama `armeabi-v7a`

@@ -1,4 +1,6 @@
+import 'package:devcode_flutter_starter/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HelloView extends StatelessWidget {
   const HelloView({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class HelloView extends StatelessWidget {
           TextButton(
             key: const Key('router-button'),
             onPressed: () {
-              // TODO: tuliskan code untuk melakukan routing ke halaman RetrieveDataView
+              Get.toNamed(Routes.retrieveData);
             },
             child: const Text('Level Selanjutnya',
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white)
