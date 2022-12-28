@@ -1,6 +1,5 @@
 import 'package:devcode_flutter_starter/data/enums/enums.dart';
-// TODO: Uncomment code di bawa ini untuk meng-import file create_contact_request.dart
-// import 'package:devcode_flutter_starter/data/model/request/create_contact_request.dart';
+import 'package:devcode_flutter_starter/data/model/request/create_contact_request.dart';
 import 'package:devcode_flutter_starter/data/model/response/contact_model.dart';
 import 'package:devcode_flutter_starter/data/repository/contact_repository.dart';
 import 'package:flutter/material.dart';
@@ -35,15 +34,14 @@ class RetrieveDataController extends GetxController {
 
   void createContact() async {
     createContactStatus(RequestStatus.LOADING);
-    // TODO: Uncomment code di bawah untuk memanggil method yg ada di [contactRepository].
-    // final data = await contactRepository.createContact(createContactRequest(fullname.value, phoneNumber.value, email.value));
-    // createContactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
-    //
-    // resetInput();
-    //
-    // data.fold((left) {
-    //   getContacts();
-    // }, (right) => contacts.add(right));
+    final data = await contactRepository.createContact(createContactRequest(fullname.value, phoneNumber.value, email.value));
+    createContactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
+
+    resetInput();
+
+    data.fold((left) {
+      getContacts();
+    }, (right) => contacts.add(right));
   }
 
   void resetInput() {
