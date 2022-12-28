@@ -9,14 +9,11 @@ class HelloView extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Tambahkan source image path pada folder assets kedalam widget [Image.asset] di bawah ini
-          Image.asset('', key: const Key('devcode-logo'), width: 200, height: 200),
+          Image.asset('assets/png/devcode-logo.png', key: const Key('devcode-logo'), width: 200, height: 200),
           const SizedBox(height: 15,),
-          // TODO: Uncomment code di bawah ini dan tambahkan property [key] dengan value 'devcode-title'.
-          //  [key] ini berguna agar automation test dapat mengecek apakah terdapat widget dengan value yang sesuai atau tidak.
-          // const Align(
-          //   alignment: Alignment.center, child: Text("I'm ready for the next challenge!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
-          // )
+          const Align(
+            alignment: Alignment.center, child: Text("I'm ready for the next challenge!", key: Key('devcode-title'), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+          )
         ],
       ),
     );
