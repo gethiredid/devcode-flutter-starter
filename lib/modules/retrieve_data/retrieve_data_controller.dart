@@ -10,19 +10,21 @@ class RetrieveDataController extends GetxController {
 
   final contactRepository = ContactRepositoryImpl();
 
-  void getContacts() async {
-    contactStatus(RequestStatus.LOADING);
-    final data = await contactRepository.getContact();
-    // Code di bawah ini adalah inline condition atau biasa disebut ternary condition.
-    // [.isLeft()] merupakan method bawaaan dari package [dartz] untuk mengetahui status error
-    contactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
-
-    data.fold((left) {}, (right) => contacts.assignAll(right));
-  }
+  // TODO: Uncomment code di bawah ini untuk melakukan request API mendapatkan list contact.
+  // void getContacts() async {
+  //   contactStatus(RequestStatus.LOADING);
+  //   final data = await contactRepository.getContact();
+  //   // Code di bawah ini adalah inline condition atau biasa disebut ternary condition.
+  //   // [.isLeft()] merupakan method bawaaan dari package [dartz] untuk mengetahui status error
+  //   contactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
+  //
+  //   data.fold((left) {}, (right) => contacts.assignAll(right));
+  // }
 
   @override
   void onInit() {
-    getContacts();
+    // TODO: Uncomment code di bawah ini untuk memanggil method getContacts()
+    // getContacts();
 
     super.onInit();
   }

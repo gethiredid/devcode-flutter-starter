@@ -22,7 +22,8 @@ class RetrieveDataView extends GetView<RetrieveDataController> {
         children: [
           GestureDetector(
             onTap: () {
-              controller.getContacts();
+              // TODO: Uncomment code di bawah ini untuk memanggil method [getContacts] di dalam class [RetrieveDataController].
+              // controller.getContacts();
             },
             child: const Icon(Icons.refresh, size: 24,),
           ),
