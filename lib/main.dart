@@ -12,8 +12,7 @@ void initFlutterDriver() async {
 }
 
 void main() {
-  // Uncomment code di bawah ini, setiap kali ingin build debug apk untuk proses automation test.
-  // Comment code di bawah ini apabila dalam proses developing aplikasi
+  // TODO: Uncomment code di bawah, setiap kali ingin build debug apk untuk proses automation test.
   // initFlutterDriver();
 
   runApp(const MyApp());
