@@ -3,6 +3,7 @@ import 'package:devcode_flutter_starter/data/enums/enums.dart';
 // import 'package:devcode_flutter_starter/data/model/request/create_contact_request.dart';
 import 'package:devcode_flutter_starter/data/model/response/contact_model.dart';
 import 'package:devcode_flutter_starter/data/repository/contact_repository.dart';
+import 'package:devcode_flutter_starter/modules/retrieve_data/widgets/create_edit_result_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,11 +40,19 @@ class RetrieveDataController extends GetxController {
     // final data = await contactRepository.createContact(createContactRequest(fullname.value, phoneNumber.value, email.value));
     // createContactStatus(data.isLeft() ? RequestStatus.ERROR : RequestStatus.SUCCESS);
     //
-    // resetInput();
-    //
     // data.fold((left) {
+    //   if (left == 'full_name, phone_number, and email is duplicate') {
+    //     showCreateEditResultDialog('Data yang anda masukkan sudah terdaftar di server!');
+    //   }
+    //
     //   getContacts();
-    // }, (right) => contacts.add(right));
+    // }, (right) {
+    //   showCreateEditResultDialog('Berhasil memasukkan data ke server!');
+    //
+    //   contacts.add(right);
+    // });
+    //
+    // resetInput();
   }
 
   void resetInput() {
@@ -54,6 +63,10 @@ class RetrieveDataController extends GetxController {
     fullnameController.text = fullname.value;
     phoneNumberController.text = phoneNumber.value;
     emailController.text = email.value;
+  }
+
+  void showCreateEditResultDialog(String title) async {
+    Get.dialog(CreateEditResultDialog(title: title, fullname: fullname.value, phone: phoneNumber.value, email: email.value));
   }
 
   @override
