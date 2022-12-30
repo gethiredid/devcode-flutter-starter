@@ -35,7 +35,7 @@ class ContactRepositoryImpl extends ContactRepository {
 
       return data.data != null ? Right(data.data!) : const Left('Gagal membuat contact');
     } else {
-      return const Left('Tidak ada data');
+      return Left('${response.body['message'] ?? ''}');
     }
   }
 }
